@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>ACME Organizatio</title>
+  <title>ETHSanFrancisco</title>
   <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
     <script defer src="https://use.fontawesome.com/releases/v5.0.9/js/all.js" integrity="sha384-8iPTk2s/jMVj81dnzb/iFR2sdA7u06vHJyyLlAd4snFpCl/SnyUjRrbdJsw1pGIl" crossorigin="anonymous"></script>
@@ -9,108 +9,24 @@
         .title {
             margin-top:20px;
         }
-</style>
+    </style>
 
 </head>
 <body class="container">
     <div class="row">
         <div class="title">
-            <h1><i class="far fa-building"></i>&nbsp;ACME Organization</h1>
-            <p>Welcome, f</p>
+            <h1>&nbsp;ETH SanFrancisco</h1>
+            <br/>
+            <p>
+                <ul>
+                    <li><a href="/hackathon/organization/">ACME Interface</a></li>
+                    <li><a href="/hackathon/community/">Community user Interface</a></li>
+                    <li><a href="/hackathon/investor/">Investor Interface</a></li>
+                    <li><a href="/hackathon/customer/">Customer Interface</a></li>
+                </ul>
+            </p>
         </div>
     </div>
-    <div class="row">
-        <div class="col-lg-8">
-            <form class="form-inline">
- <div class="input-group">
-    <div class="input-group-prepend">
-      <div class="input-group-text">ETH</div>
-    </div>
-    <input type="text" class="form-control" name="buy" id="buy-value" placeholder="Amount">
-</div>
-  <a href="#" onclick="buy()" class="btn btn-primary">Buy TOK</a>
-</form>
-<br />
-<form class="form-inline">
-  <div class="input-group">
-     <div class="input-group-prepend">
-       <div class="input-group-text">TOK</div>
-     </div>
-     <input type="text" class="form-control"  name="sell" id="sell-value" placeholder="Amount">
- </div>
-
-  <a href="#" onclick="sell()" class="btn btn-primary">Sell TOK</a>
-</form>
-
-<br />
-
-<div class="form-row align-items-center">
-   <div class="col-auto">
-     <label class="sr-only" for="inlineFormInput">Address</label>
-     <input type="text" class="form-control mb-2" id="transfer-address" placeholder="Recipient">
-   </div>
-   <div class="col-auto">
-     <label class="sr-only" for="inlineFormInputGroup">Value</label>
-     <div class="input-group mb-2">
-       <div class="input-group-prepend">
-         <div class="input-group-text">TOK</div>
-       </div>
-       <input type="text" class="form-control" id="transfer-amount" placeholder="Amount">
-     </div>
-   </div>
-   <div class="col-auto">
-     <a href="#" onclick="transfer()" class="btn btn-primary">Transfer TOK</a>
-   </div>
- </div>
-
-
-   <br />
-
-  <form class="form-inline">
-    <div class="input-group">
-       <div class="input-group-prepend">
-         <div class="input-group-text">ETH</div>
-       </div>
-       <input type="text" class="form-control"  name="revenue" id="revenue-value" placeholder="Invoice">
-   </div>
-
-    <a href="#" onclick="revenue()" class="btn btn-primary">Pay</a>
-  </form>
-            <br />
-
-  <form class="form-inline">
-    <div class="input-group">
-       <div class="input-group-prepend">
-         <div class="input-group-text">ETH</div>
-       </div>
-       <input type="text" class="form-control"  name="revenue" id="grant-value" placeholder="Amount">
-   </div>
-
-    <a href="#" onclick="grant()" class="btn btn-primary">Grant</a>
-  </form>
-            
-            </div>
-        <div class="col-lg-4">
-  
-  
-      <ul>
-          <li>Balance: <span id="balance-tok">0</span> TOK - <span id="balance-eth">0</span> ETH</li>
-          <li>Selling reserve: <span id="sell-reserve">0</span> ETH</li>
-          <li>Total supply: <span id="n-tokens">0</span> TOK</li>
-    </ul>
-  
-        </div>
-    </div>
-
-
-
-
-
-
-
-
-  
-
 
   <!-- <table class="table" id="sumup" onload="sumUp()">
   <thead>

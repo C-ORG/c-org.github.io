@@ -1,3 +1,18 @@
+var getUrlParameter = function getUrlParameter(sParam) {
+  // https://stackoverflow.com/a/21903119/4986615
+    var sPageURL = decodeURIComponent(window.location.search.substring(1)),
+        sURLVariables = sPageURL.split('&'),
+        sParameterName,
+        i;
+
+    for (i = 0; i < sURLVariables.length; i++) {
+        sParameterName = sURLVariables[i].split('=');
+
+        if (sParameterName[0] === sParam) {
+            return sParameterName[1] === undefined ? true : sParameterName[1];
+        }
+    }
+};
 
 
 let contractInstance = null;
@@ -12,7 +27,13 @@ window.addEventListener('load', function() {
   userAddress = web3.eth.defaultAccount;
   web1 = new Web3(web3.currentProvider);
   web0 = web3;
-  contractInstance = new web1.eth.Contract(abi, address);
+  let addressURL = getUrlParameter('address');
+  if (addressURL == undefined){
+    contractInstance = new web1.eth.Contract(abi, address);
+  }
+  else {
+    contractInstance = new web1.eth.Contract(abi, addressURL);
+  }
 
    updateBalance(userAddress);
    updateSellReserve();

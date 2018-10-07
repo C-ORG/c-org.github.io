@@ -36,9 +36,13 @@ window.addEventListener('load', function() {
     contractInstance = new web1.eth.Contract(abi, addressURL);
   }
 
+  web3.eth.getAccounts(callback(error, result){
+    // console.log
    updateBalance(userAddress);
    updateSellReserve();
    updateNumTokens();
+
+   sumUp();
 
   } else {
      // Warn the user that they need to get a web0 browser
@@ -57,11 +61,11 @@ function buy() {
                     'gasPrice': 100000,
                     'value': wei
     })
-    .then(function() {
-      updateBalance(userAddress);
-      updateSellReserve();
-      updateNumTokens();
-    });
+    .then();
+
+  updateBalance(userAddress);
+  updateSellReserve();
+  updateNumTokens();
 }
 
 
@@ -73,11 +77,10 @@ function sell() {
     gas: 4712388,
     gasPrice: 100000
   })
-  .then(function() {
-    updateBalance(userAddress);
-    updateSellReserve();
-    updateNumTokens();
-  });
+  .then();
+  updateBalance(userAddress);
+  updateSellReserve();
+  updateNumTokens();
 }
 
 function transfer() {
@@ -89,27 +92,12 @@ function transfer() {
     gas: 4712388,
     gasPrice: 100000
   })
-  .then(function() {
-    updateBalance(userAddress);
-    updateSellReserve();
-    updateNumTokens();
-  });
-}
+  .then();
 
-function transfer() {
-  const value = $("#transfer-amount").val();
-  wei = web0.toWei(value, 'ether');
-  const address = $("#transfer-address").val();
-  contractInstance.methods.transfer(address, wei).send({
-    from: userAddress,
-    gas: 4712388,
-    gasPrice: 100000
-  })
-  .then(function() {
-    updateBalance(userAddress);
-    updateSellReserve();
-    updateNumTokens();
-  });
+  updateBalance(userAddress);
+  updateSellReserve();
+  updateNumTokens();
+
 }
 
 
@@ -122,11 +110,10 @@ function revenue() {
     gasPrice: 100000,
     value: wei
   })
-  .then(function() {
-    updateBalance(userAddress);
-    updateSellReserve();
-    updateNumTokens();
-  });
+  .then();
+  updateBalance(userAddress);
+  updateSellReserve();
+  updateNumTokens();
 }
 
 function grant() {
@@ -138,19 +125,21 @@ function grant() {
     gasPrice: 100000,
     value: wei
   })
-  .then(
-    web0.eth.accounts.forEach(
-      contractInstance.methods.askDividend().send({
-        from: userAddress,
-        gas: 4712388,
-        gasPrice: 100000
-      })
-    )
-  ).then(function() {
-    updateBalance(userAddress);
-    updateSellReserve();
-    updateNumTokens();
+  .then();
+
+
+  web0.eth.accounts.forEach(function(address) {
+    console.log(address);
+    contractInstance.methods.askDividend(address).send({
+      from: address,
+      gas: 4712388,
+      gasPrice: 100000
+    }).then();
   });
+
+  updateBalance(userAddress);
+  updateSellReserve();
+  updateNumTokens();
 }
 
 
@@ -189,19 +178,21 @@ function sumUp() {
   });
 
   let balancesTOK = [];
-  web0.eth.accounts.forEach(function (i, address) {
-    contractInstance.methods.balanceOf(address).call()
-    .then((res) => {
-      balancesTOK.append(parseFloat(web0.fromWei(res)).toFixed(3));
-    });
+  web0.eth.accounts.forEach(function (address) {
+    console.log(address);
+    // contractInstance.methods.balanceOf(address).call()
+    // .then((res) => {
+    //   balancesTOK.append(parseFloat(web0.fromWei(res)).toFixed(3));
+    // });
   });
 
   let balancesETH = [];
-  web0.eth.accounts.forEach(function (i, address) {
-    web1.eth.getBalance(address)
-    .then((res) => {
-      balancesETH.append(parseFloat(web0.fromWei(res,"ether")));
-    });
+  web0.eth.accounts.forEach(function (address) {
+    console.log(address);
+    // web1.eth.getBalance(address)
+    // .then((res) => {
+    //   balancesETH.append(parseFloat(web0.fromWei(res,"ether")));
+    // });
   });
 
 
@@ -213,10 +204,3 @@ function sumUp() {
   });
 
 }
-
-
-// $(document).ready(function() {
-//     updateBalance(userAddress);
-//     updateSellReserve();
-//     updateNumTokens();
-// });

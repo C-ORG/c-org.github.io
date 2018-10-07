@@ -36,7 +36,7 @@ window.addEventListener('load', function() {
     contractInstance = new web1.eth.Contract(abi, addressURL);
   }
 
-  web3.eth.getAccounts(callback(error, result){
+  // web3.eth.getAccounts(callback(error, result){});
     // console.log
    updateBalance(userAddress);
    updateSellReserve();
